@@ -1,12 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Header from './Components/Layout/Header';
+import ContactIndex from './Components/ContactPages/ContactIndex'
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <div>
-    <Header></Header>
-  </div>
-);
+root.render(<ContactIndex />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
