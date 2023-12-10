@@ -35,6 +35,10 @@ class ContactIndex extends React.Component {
           ],
         };
       }
+      handleAddContact = () => {
+        alert("hello");
+      };
+
     render() {
         return (
             <div>
@@ -48,9 +52,11 @@ class ContactIndex extends React.Component {
                         <RemoveAllContact />
                     </div>
                     <div className="row py-2">
-                        <AddContact />
+                      <div className="col-8 offset-2 row">
+                        <AddContact handleAddContact={this.handleAddContact} />
+                      </div>
                     </div>
-                    <div className="row py-2">
+                    <div className="col-8 offset-2 row">
                     <FavoriteContacts
                             contacts={this.state.contactList.filter(
                             (u) => u.isFavorite === true
@@ -58,11 +64,13 @@ class ContactIndex extends React.Component {
                         />
                     </div>
                     <div className="row py-2">
-                    <GeneralContacts
-                            contacts={this.state.contactList.filter(
-                            (u) => u.isFavorite === false
-                            )}
-                        />
+                      <div className="col-8 offset-2 row">
+                        <GeneralContacts
+                                contacts={this.state.contactList.filter(
+                                (u) => u.isFavorite === false
+                                )}
+                            />
+                        </div>
                     </div>
                 </div>
                 </div>
