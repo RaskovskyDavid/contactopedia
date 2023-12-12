@@ -45,6 +45,9 @@ class ContactIndex extends React.Component {
           if (x.name === newContact.name && x.phone === newContact.phone) {
             return true;
           }
+          else {
+            return false;
+          }
         });
           if (duplicateRecord.length > 0) {
             return { status: "failure", msg: "Duplicate Record" };
@@ -61,6 +64,19 @@ class ContactIndex extends React.Component {
             });
             return { status: "success", msg: "Contact was added successfully" };
           }
+      };
+
+      handleToggleFavorites = (contact) => {
+        this.setState((prevState) => {
+          return {
+            contactList: prevState.contactList.map((obj) => {
+              if (obj.id === contact.id) {
+                return { ...obj, isFavorite: !obj.isFavorite };
+              }
+              return obj;
+            }),
+          };
+        });
       };
 
     render() {
@@ -85,6 +101,7 @@ class ContactIndex extends React.Component {
                             contacts={this.state.contactList.filter(
                             (u) => u.isFavorite === true
                             )}
+                            favoriteClick={this.handleToggleFavorites}
                         />
                     </div>
                     <div className="row py-2">
@@ -93,6 +110,7 @@ class ContactIndex extends React.Component {
                                 contacts={this.state.contactList.filter(
                                 (u) => u.isFavorite === false
                                 )}
+                                favoriteClick={this.handleToggleFavorites}
                             />
                         </div>
                     </div>
