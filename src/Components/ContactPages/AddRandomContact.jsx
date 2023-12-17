@@ -1,16 +1,21 @@
 import { getRandomUser } from "../../Utility/api";
 
-const GetRandomContact = async () => {
+const GetRandomContact = async (props) => {
   const responseFromAPI = await getRandomUser();
-  console.log(responseFromAPI);
-};
+  console.log(responseFromAPI); 
+  return props.handleAddRandomContact({
+    name: responseFromAPI.data[0].first_name + " " + responseFromAPI.data.last_name,
+    email: responseFromAPI.data[0].email,
+    phone: responseFromAPI.data[0].phone_number,
+  });}
+;
 
-const AddRandomContact = () => {
+const AddRandomContact = (props) => {
     return (
       <div>
         <button
         className="btn btn-success form-control"
-        onClick={() => GetRandomContact()}
+        onClick={() => GetRandomContact(props)}
         >
            Add Random Contact
       </button>
