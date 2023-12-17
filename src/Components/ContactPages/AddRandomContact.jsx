@@ -4,7 +4,7 @@ const GetRandomContact = async (props) => {
   const responseFromAPI = await getRandomUser();
   console.log(responseFromAPI); 
   return props.handleAddRandomContact({
-    name: responseFromAPI.data[0].first_name + " " + responseFromAPI.data.last_name,
+    name: responseFromAPI.data[0].first_name + " " + responseFromAPI.data[0].last_name,
     email: responseFromAPI.data[0].email,
     phone: responseFromAPI.data[0].phone_number,
   });}
